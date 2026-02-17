@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Student Evaluation System</title>
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,7 +56,6 @@
 <body>
 
 <div class="container">
-
     @if(!request()->filled(['name','prelim','midterm','final']))
         <h3>Student Evaluation System</h3>
 
@@ -76,7 +74,6 @@
             <input type="number" name="final">
 
             <button type="submit">Evaluate</button>
-
         </form>
     @else
         @php
@@ -126,9 +123,7 @@
             </p>
             <p><strong>Award:</strong> {{ $award }}</p>
         </div>
-
     @endif
-
 </div>
 
 </body>
