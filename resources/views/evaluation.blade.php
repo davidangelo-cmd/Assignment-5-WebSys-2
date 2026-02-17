@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Student Evaluation System</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,28 +58,27 @@
 
 <div class="container">
 
-    <h3>Student Evaluation System</h3>
+    @if(!request()->filled(['name','prelim','midterm','final']))
+        <h3>Student Evaluation System</h3>
 
-    <form method="GET" action="/evaluation">
+        <form method="GET" action="/evaluation">
 
-        <label>Name</label>
-        <input type="text" name="name" value="{{ request('name') }}">
+            <label>Student Name</label>
+            <input type="text" name="name">
 
-        <label>Prelim</label>
-        <input type="number" name="prelim" value="{{ request('prelim') }}">
+            <label>Prelim Grade</label>
+            <input type="number" name="prelim">
 
-        <label>Midterm</label>
-        <input type="number" name="midterm" value="{{ request('midterm') }}">
+            <label>Midterm Grade</label>
+            <input type="number" name="midterm">
 
-        <label>Final</label>
-        <input type="number" name="final" value="{{ request('final') }}">
+            <label>Final Grade</label>
+            <input type="number" name="final">
 
-        <button type="submit">Evaluate</button>
+            <button type="submit">Evaluate</button>
 
-    </form>
-
-    @if(request()->filled(['name','prelim','midterm','final']))
-
+        </form>
+    @else
         @php
             $name = request('name');
             $prelim = request('prelim');
@@ -112,6 +112,7 @@
             }
         @endphp
 
+        <h3>Evaluation Result</h3>
         <div class="result">
             <hr>
             <p><strong>Name:</strong> {{ $name }}</p>
@@ -125,6 +126,7 @@
             </p>
             <p><strong>Award:</strong> {{ $award }}</p>
         </div>
+
     @endif
 
 </div>
